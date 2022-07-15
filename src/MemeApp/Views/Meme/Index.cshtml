@@ -1,13 +1,42 @@
-﻿@{
+﻿@model MemeApp.Models.Memes
+
+@{
     ViewData["Title"] = "Memes";
 }
 
-<div>
-    <h1 class="display-4">TODO </h1>
+<h1>Index</h1>
 
-    <ol>
-        <li>Använda api https://imgflip.com/api</li>
-        <li>Skapa en egen meme via api</li>
-    </ol>
+
+
+    <h1 class="display-4">Memes  </h1>
+
+    @if (Model.success)
+    {
+        <table class="table">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Image</th>
+            </tr>
+        @{
+            foreach (var m in Model.data.memes)
+            {
+                <tr>
+                <td>@m.id</td>
+                <td>@m.name</td>
+                <td><img src="@m.url" class="img-thumbnail"/> </td>
+                </tr>
+            }
+        }
+        </table>
+    }
+    else
+    {
+        <h2>Datafel !</h2>
+    }
+
     
-</div>
+    
+
+
+
